@@ -1,0 +1,19 @@
+codecov:
+  require_ci_to_pass: no
+
+coverage:
+  precision: 2
+  round: down
+  range: "60...90"
+  status:
+    project:
+      default:
+        informational: true
+    patch:
+      default:
+        informational: true
+
+comment:
+  layout: "reach,diff,files"
+  behavior: default
+  require_changes: no
