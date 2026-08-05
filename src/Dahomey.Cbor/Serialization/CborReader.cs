@@ -280,6 +280,20 @@ namespace Dahomey.Cbor.Serialization
             return header.MajorType == CborMajorType.Primitive && header.Primitive == CborPrimitive.Null;
         }
 
+        /// <summary>
+        /// Reports whether the next data item carries a semantic tag.
+        /// </summary>
+        /// <remarks>
+        /// Like <see cref="IsNull"/> and <see cref="IsBreak"/> this inspects the header and skips
+        /// nothing. It lets a converter that only sometimes wants the tag pay for a bookmark on the rare
+        /// tagged item rather than on every item.
+        /// </remarks>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal bool IsSemanticTag()
+        {
+            return GetHeader().MajorType == CborMajorType.SemanticTag;
+        }
+
         public CborReaderBookmark GetBookmark()
         {
             CborReaderBookmark bookmark;
